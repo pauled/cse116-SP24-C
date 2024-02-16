@@ -11,4 +11,11 @@ public class Character {
         this.battlesWon++;
         this.xpPts+=xp;
     }
+
+    @Override
+    public String toString() {
+        String out="battles won: "+this.battlesWon;
+        out+=" xp: "+this.xpPts;
+        return out;
+    }
 }

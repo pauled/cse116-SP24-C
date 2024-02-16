@@ -7,8 +7,8 @@ public class Party {
     private int battlesWon;
 
     public Party(){
-        battlesWon=0;
-        members=new ArrayList<>();
+        this.battlesWon=0;
+        this.members=new ArrayList<>();
     }
     public void addMember(Character member){
         this.members.add(member);
@@ -18,5 +18,22 @@ public class Party {
         for (int x=0; x<this.members.size(); x++){
             this.members.get(x).winBattle(xp);
         }
+    }
+    public String toString(){
+        String out="battles won: "+this.battlesWon;
+        for (int x=0; x<this.members.size(); x++){
+            out+="\n "+this.members.get(x);
+        }
+        return out;
+    }
+    public static void main(String[] args) {
+        Character hero1=new Character();
+        Character hero2=new Character();
+        hero2.winBattle(5);
+        Party party=new Party();
+        party.addMember(hero1);
+        party.addMember(hero2);
+        party.winBattle(10);
+        System.out.println(party);
     }
 }
