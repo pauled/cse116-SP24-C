@@ -1,6 +1,5 @@
 package week7;
 
-import week4.Player;
 
 public class HealthPotion extends GameItem{
     private int heal;
@@ -22,5 +21,11 @@ public class HealthPotion extends GameItem{
         System.out.println(hp1);
         Weapon w1=new Weapon(4,5,6);
         System.out.println(w1);
+        Player p1=new Player(10);
+        System.out.println(p1);
+        p1.move(13,42);
+        hp1.move(10,10);
+        System.out.println(p1);
+        System.out.println(hp1);
     }
 }

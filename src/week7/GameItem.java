@@ -1,6 +1,5 @@
 package week7;
 
-import week4.Player;
 
 public class GameItem {
     private double xLoc;
@@ -14,7 +13,11 @@ public class GameItem {
 
     @Override
     public String toString() {
-        String out="loc x: "+this.xLoc+" y: "+this.yLoc;
+        String out=" ("+this.xLoc+","+this.yLoc+")";
         return out;
+    }
+    public void move(double dx,double dy){
+        this.xLoc+=dx;
+        this.yLoc+=dy;
     }
 }
