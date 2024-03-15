@@ -12,6 +12,16 @@ public class BinaryTreeNode <A>{
         this.left=left;
         this.right=right;
     }
+    public int count(){
+        int out=1;
+        if (this.left!=null){
+            out+=this.left.count();
+        }
+        if (this.right!=null){
+            out+=this.right.count();
+        }
+        return out;
+    }
     public String preOrderTraversal(BinaryTreeNode node){
         if (node!=null){
             String out="";
@@ -56,5 +66,13 @@ public class BinaryTreeNode <A>{
         System.out.println(root.preOrderTraversal(root));
         System.out.println(root.postOrderTraversal(root));
         System.out.println(root.inOrderTraversal(root));
+        System.out.println(root.count());
+
+        root=new BinaryTreeNode<>(5, null,null);
+        root.left=new BinaryTreeNode<>(2,null,null);
+        root.right=new BinaryTreeNode<>(8,null,null);
+        root.left.left=new BinaryTreeNode<>(-3,null,null);
+        System.out.println(root.inOrderTraversal(root));
+        System.out.println(root.count());
     }
 }
