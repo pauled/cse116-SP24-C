@@ -34,4 +34,11 @@ public class City {
     public Location getLocation() {
         return location;
     }
+
+    @Override
+    public String toString() {
+        return "("+this.name+", "+this.region+", "+this.country+", "+
+                this.population+", "+this.location.getLatitude()+", "+
+                this.location.getLongitude()+")";
+    }
 }
