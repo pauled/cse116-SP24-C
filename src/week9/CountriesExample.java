@@ -1,5 +1,6 @@
 package week9;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,7 +16,20 @@ public class CountriesExample {
             return new ArrayList<>();
         }
     }
-    public static HashMap<String,ArrayList<City>> loadCountries(String filename){
+    public static void writeFile(String filename,HashMap<String,
+            ArrayList<City>> data){
+        try {
+            FileWriter myWriter = new FileWriter(filename);
+            myWriter.write("Files in Java might be tricky, but it is fun enough!");
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+    public static HashMap<String,ArrayList<City>> loadCountriesAbove(
+            String filename,int threshold){
         HashMap<String,ArrayList<City>> countries=new HashMap<>();
         ArrayList<String> lines=readFile(filename);
         lines.remove(0);
@@ -31,17 +45,23 @@ public class CountriesExample {
 
             Location location = new Location(latitude, longitude);
             City city = new City(name, region, country, population, location);
-            if (!countries.containsKey(country)){
-                countries.put(country,new ArrayList<>());
+            if (population>=threshold) {
+                if (!countries.containsKey(country)) {
+                    countries.put(country, new ArrayList<>());
+                }
+                countries.get(country).add(city);
             }
-            countries.get(country).add(city);
         }
         return countries;
+    }
+    public static HashMap<String,ArrayList<City>> loadCountries(String filename){
+        return loadCountriesAbove(filename,0);
     }
 
     public static void main(String[] args) {
         HashMap<String,ArrayList<City>> countries=
                 loadCountries("data/cities_test_2.csv");
         System.out.println(countries);
+        writeFile("data/classTest.csv",countries);
     }
 }
