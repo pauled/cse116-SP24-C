@@ -1,7 +1,7 @@
 package week10;
 
 
-public class GameItem {
+public abstract class GameItem {
     private double xLoc;
     private double yLoc;
 
@@ -9,8 +9,6 @@ public class GameItem {
         this.xLoc=xLoc;
         this.yLoc=yLoc;
     }
-    public void use(Player player){}
-
     @Override
     public String toString() {
         String out=" ("+this.xLoc+","+this.yLoc+")";
