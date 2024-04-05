@@ -3,10 +3,10 @@ package week10;
 public class RunGame {
     public static void main(String[] args) {
         HealthPotion hp1=new HealthPotion(1,2,3);
-        System.out.println(hp1);
+        //System.out.println(hp1);
         Usable gi1=hp1;
-        System.out.println(gi1);
-        hp1.throwItem();
+        //System.out.println(gi1);
+        //hp1.throwItem();
         //gi1.throwItem();
         Object o=hp1;
         Usable gi2=new HealthPotion(1,2,3);
