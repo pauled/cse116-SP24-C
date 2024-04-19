@@ -30,6 +30,7 @@ public class BruceBanner {
         bruce.getAngry();
         bruce.useCar(car);
         bruce.fight();
+        bruce.calmDown();
         bruce.learnControl();
         bruce.useCar(car);
         bruce.fight();
