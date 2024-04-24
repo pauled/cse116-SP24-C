@@ -45,6 +45,21 @@ public class Graph<N> {
         }
         return true;
     }
+    public double costOfPath(ArrayList<N> path,Cost findCost){
+        if (validPath(path)){
+            double cost=0;
+            for (int x=0; x<path.size()-1; x++) {
+                N from = path.get(x);
+                N to = path.get(x + 1);
+                for (Edge edge : this.adjacencyList.get(from))
+                    if (edge.getEnd().equals(to))
+                        cost+=findCost.cost(edge);
+            }
+            return cost;
+        } else {
+            return -1;
+        }
+    }
     public static void main(String[] args) {
         Graph<String> graph=new Graph<>();
         ArrayList<Edge<String>> flights=new ArrayList<>();
@@ -65,5 +80,9 @@ public class Graph<N> {
                         "BUF","JFK","WDC","PHI"
                 ));
         System.out.println(graph.validPath(path));
+
+        FlightDistance dist=new FlightDistance();
+        double distPath=graph.costOfPath(path,dist);
+        System.out.println(distPath);
     }
 }
